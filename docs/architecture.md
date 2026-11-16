@@ -11,7 +11,7 @@ flowchart TB
     api --> media[R2]
     api --> stripe[Stripe]
     api --> mail[Resend]
-    worker["Scheduled Worker"] -->|Claims jobs| db
+    worker["Scheduled Worker"] -->|Reads & locks pending tasks| db
     worker --> stripe
     worker --> mail
 ```
