@@ -1,0 +1,24 @@
+{
+  "name": "educational-angular-cart-session",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Educational reconstruction of cart state and checkout-session correlation using Angular Signals.",
+  "engines": {
+    "node": "^20.19.0 || ^22.12.0 || >=24.0.0"
+  },
+  "scripts": {
+    "check": "node node_modules/typescript/bin/tsc --noEmit",
+    "build": "node node_modules/typescript/bin/tsc",
+    "pretest": "npm run build",
+    "test": "node --test tests/cart-session.test.mjs"
+  },
+  "dependencies": {
+    "@angular/core": "21.2.26",
+    "rxjs": "7.8.2",
+    "tslib": "2.8.1"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "educational-checkout-integrity",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Generic educational reconstruction of server-authoritative checkout validation.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "check": "node node_modules/typescript/bin/tsc --noEmit",
+    "build": "node node_modules/typescript/bin/tsc",
+    "pretest": "npm run build",
+    "test": "node --test tests/checkout.test.mjs"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}
