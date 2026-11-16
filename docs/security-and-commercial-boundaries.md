@@ -20,10 +20,6 @@ Technical mechanisms may be explained without publishing operational identities.
 
 **Code excerpts and visual material require permission before public distribution.** Public access to a commercial website does not authorize redistribution of its code, screenshots or assets.
 
-[CONFIRM: written permission to publish this case study and use the client name.]
-
-[CONFIRM: permission for any future source excerpts, screenshots or demo links, including required design and third-party attribution.]
-
 No license is included until redistribution rights are confirmed. Third-party notices require review for any material actually distributed; a bundled font license does not grant rights to unrelated client artwork.
 
 ## Development Attribution
