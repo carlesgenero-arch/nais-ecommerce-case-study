@@ -45,7 +45,7 @@ Sole-developer responsibility does not mean that I manually wrote every line of 
 
 ## Project Details and Publication Status
 
-- **Portfolio author:** [CONFIRM: preferred professional name.]
-- **Project period:** [CONFIRM: development period and commercial launch date.]
+- **Portfolio author:** Carles Generó
+- **Project period:** September-November 2026
 
 This case study includes a standalone [educational cart example](examples/angular-cart-session/README.md), not a runnable storefront. The production repository remains private. Code excerpts and visual material require permission before public distribution; publication conditions are consolidated in [Security and commercial boundaries](docs/security-and-commercial-boundaries.md).
