@@ -1,53 +1,74 @@
 # Testing and Deployment
 
-## Local Automated Evidence
+## Testing Strategy
 
-The private application uses Angular component/service tests with Vitest and backend suites with the Node.js test runner, local SQLite fixtures and injected or mocked provider clients.
+NAIS Drinks was developed using automated tests, TypeScript validation and manual verification of critical user flows.
 
-Representative scenarios include:
+The application includes Angular component and service tests with Vitest, alongside backend tests using the Node.js test runner, local SQLite fixtures and mocked external services.
 
-- Old paid confirmations, missing correlation, storage failures and cross-tab cart changes.
-- Invalid Checkout inputs, unavailable products and mismatched provider pricing.
-- Invalid webhook signatures, unpaid sessions and duplicate order persistence.
-- Competing job claims, expired leases, stale owners and ambiguous provider responses.
-- Stale catalogue revisions, concurrent edits, idempotent replay and recovery after partial failure.
-- Customer-provided content escaping in rendered email templates.
+Key scenarios covered by automated tests include:
 
-Tests demonstrate behavior under their controlled inputs. Mocked clients do not establish that deployed service bindings, credentials, sender settings or provider accounts are correct. Tests using local database fixtures are not evidence of a Production restore drill.
+- **Shopping cart:** quantity limits, state persistence and protection against outdated Checkout confirmations.
+- **Checkout and payments:** invalid requests, product availability, server-side pricing and Stripe webhook validation.
+- **Order management:** payment verification, duplicate event handling and order persistence.
+- **Asynchronous processing:** concurrent jobs, retries and recovery after interrupted operations.
+- **Admin operations:** outdated product edits, concurrent updates and data consistency.
+- **Emails:** template rendering, escaping and notification behavior.
 
-## Three Validation Levels
+Automated tests validate expected behavior under controlled conditions. External integrations also require verification in their configured environments.
 
-**Local automated validation:** focused regression suites, strict TypeScript checks, Angular template compilation and a production build. Local runtime integration tests, where used, validate that runtime setup only.
+## Validation Environments
 
-**UAT validation:** a separately configured environment for browser checks and environment-dependent integrations. A UAT pass does not establish Production binding or credential correctness.
+The project followed three levels of validation.
 
-**Production verification:** release-specific confirmation of the active artifact and effective configuration, followed by authorized checks of live behavior. The project owner coordinated UAT validation and production deployments; this document does not assert that every failure scenario was exercised live.
+### 1. Local Development
 
-Release date: November 10th 2026
+Before integration or deployment, changes were checked using:
 
-## Private Application Commands
+- Automated frontend and backend tests.
+- TypeScript type checking.
+- Angular production builds.
+- Focused regression tests for modified functionality.
 
-These commands belong to the original application and cannot run from the portfolio root. The two standalone educational code examples have their own automated tests and execution instructions in their respective READMEs.
+### 2. UAT — User Acceptance Testing
 
-```sh
-npm ci
-npm test -- --watch=false
-npm run check:server
-npm run test:checkout
-npm run test:webhook
-npm run test:orders
-npm run test:promo
-npm run build
-```
+A separate Cloudflare environment was used to validate functionality before releasing it to customers.
 
-Additional Node.js suites cover newsletter delivery, promotional issuance and catalogue operations. The commands above are not an exhaustive backend validation list. No test count, coverage percentage or performance metric is claimed.
+UAT testing included:
 
-## Deployment and Release Responsibilities
+- Browser and responsive checks.
+- Stripe Checkout in TEST mode.
+- Database migrations and order persistence.
+- Admin functionality.
+- Transactional email behavior.
 
-Pages serves the Angular build and Functions. Scheduled Workers are deployed separately. Database migrations, secrets, bindings and environment variables are explicit dependencies; rebuilding the frontend does not validate or update all of them.
+### 3. Production
 
-I coordinated technical integration, test review, Git release workflows and production deployments. Release work included selective changes, checking configuration drift and keeping UAT and Production separate. This describes human-managed engineering work, not an automated release guarantee.
+Production releases were performed after the relevant changes had passed local validation and UAT checks.
 
-No versioned GitHub Actions workflows were found at the reviewed baseline. This case study does not claim an automated test pipeline, automated promotion or end-to-end CI/CD.
+Release verification included checking the deployed version, database compatibility and critical application flows.
 
-Code rollback, database recovery and external payment/email reconciliation are distinct operations. Restoring an application version does not undo external side effects or restore database state.
+UAT and Production used separate configurations and resources.
+
+## Deployment Architecture
+
+The application uses Cloudflare Pages to host the Angular frontend and Pages Functions for backend APIs.
+
+Additional components include:
+
+- **Cloudflare D1:** SQLite-based database and versioned migrations.
+- **Cloudflare Workers:** scheduled background processing.
+- **Stripe:** hosted Checkout and payment webhooks.
+- **Resend:** transactional email delivery.
+
+Deployments require coordination between application code, database migrations and environment configuration.
+
+The project used Git branches and selective releases to keep development changes separate from Production.
+
+## Engineering Responsibilities
+
+As the sole developer, I coordinated implementation, test validation, integration, debugging and production releases, with assistance from ChatGPT and OpenAI Codex.
+
+The workflow was based on incremental development, automated regression testing and manual UAT verification.
+
+The project does not claim a fully automated CI/CD pipeline. Releases and environment verification were managed manually.
