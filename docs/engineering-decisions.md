@@ -40,8 +40,4 @@ These cases describe implemented behavior and existing regression tests, not pro
 
 **Test evidence.** `server/catalogue-integrity.test.mjs` covers stale forms and stale reactivation before Stripe calls, concurrent editors, idempotent replay, lost provider responses and zero-row revision conflicts. Implementation: `server/catalogue/product-write.service.ts` and its operation repositories.
 
-## Supporting Boundaries
 
-The browser supplies product identifiers and quantities; the backend owns price and availability validation. Purchased names and amounts are persisted as snapshots, so later catalogue edits do not rewrite order history.
-
-I coordinated implementation, integration, validation and releases as the sole developer, using ChatGPT and OpenAI Codex throughout. These cases do not claim measured business outcomes or independent authorship of every generated line.
