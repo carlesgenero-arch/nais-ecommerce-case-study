@@ -1,51 +1,113 @@
-# NAIS — Production E-commerce Engineering Case Study
+# NAIS — Full-Stack E-commerce Case Study
 
-A production drinks e-commerce application built around practical reliability problems: keeping browser carts consistent with verified purchases, protecting catalogue edits from stale Admin forms, and recovering asynchronous work across database and provider failures.
+A production e-commerce application developed for **NAIS Drinks**, covering frontend development, serverless backend APIs, payments, order management and asynchronous processing.
 
-**Stack:** Angular 21 · TypeScript · Cloudflare · Stripe · Resend
+The project combines a bilingual storefront, Stripe Checkout, an administration interface and newsletter functionality.
 
-NAIS combines a bilingual storefront, hosted Checkout, an operational backoffice and verification-based newsletter promotions. This case study focuses on the implementation decisions and regression tests behind those workflows.
+**Live website:** [naisdrinks.com](https://naisdrinks.com/)
+
+**Project period:** September–November 2026  
+**Role:** Sole Full-Stack Developer — Freelance Project
+
+## Technology Stack
+
+**Frontend:** Angular 21 · TypeScript · HTML · CSS · Angular Signals
+
+**Backend:** Cloudflare Pages Functions · Cloudflare Workers · REST APIs
+
+**Database & Storage:** Cloudflare D1 (SQLite) · Cloudflare R2
+
+**Integrations:** Stripe Checkout · Stripe Webhooks · Resend
+
+**Development:** Git · GitHub · Automated Testing · AI-Assisted Development
 
 ## My Role & Contributions
 
-**Role:** Sole Developer — Full-Stack E-commerce Project
-**Development approach:** AI-assisted software engineering (ChatGPT & OpenAI Codex)
+I was the sole software developer responsible for delivering the application, from implementation and technical integration to testing and production deployment.
 
-I was the sole developer responsible for delivering NAIS. No other software developers participated. I coordinated the technical implementation, integration, testing and production deployments.
+My responsibilities included:
 
-My responsibilities covered:
-
-- **Frontend:** Angular components, reactive state, responsive layouts, accessibility and Catalan/Spanish interfaces.
-- **Backend:** Pages Functions, server-side business logic, database integration and API validation.
-- **Payments:** Stripe Checkout, payment verification, webhooks and order persistence.
-- **Administration:** Product management, fulfillment workflows and operational controls.
-- **Asynchronous processing:** Newsletter verification, promotional-code issuance and scheduled email delivery.
-- **Delivery:** Automated tests, debugging, UAT validation, Git workflows and production releases.
+- **Frontend development:** Responsive Angular interfaces, reusable components, shopping-cart state management, accessibility and Catalan/Spanish localization.
+- **Backend development:** Serverless APIs, business logic, input validation and database integration.
+- **Payments:** Stripe Checkout integration, secure payment verification, webhooks and order persistence.
+- **Administration:** Product catalogue management, order management and fulfillment workflows.
+- **Background processing:** Newsletter verification, promotional-code issuance and scheduled email processing.
+- **Testing and deployment:** Automated regression tests, debugging, UAT validation, Git workflows and production releases.
 
 ### AI-Assisted Development
 
-I used ChatGPT and OpenAI Codex throughout development for architectural exploration, code generation, debugging, testing and technical reviews. I directed the implementation, evaluated approaches, coordinated integrations, reviewed validation results and managed deployments.
+ChatGPT and OpenAI Codex supported the development process through code generation, architectural exploration, debugging, testing and technical reviews.
 
-Sole-developer responsibility does not mean that I manually wrote every line of code. Visual design, photography and brand artwork are not presented as my engineering work.
+I directed the implementation, coordinated integrations, evaluated technical decisions, reviewed validation results and managed releases.
 
-## Representative Engineering Work
+This project reflects practical experience delivering and maintaining a production application using AI-assisted software engineering workflows.
 
-- Correlating cart clearing with the actual Checkout Session while retaining server-side payment verification.
-- Resolving prices and availability on the server and persisting purchased order snapshots.
-- Using atomic job claims, ownership leases and bounded retries for scheduled processing.
-- Rejecting stale catalogue edits before external mutations, with durable operations for recovery.
+## Engineering Challenges
 
-## Read the Case Study
+Beyond implementing standard e-commerce functionality, the project involved solving several reliability and data-integrity challenges.
 
-- [Architecture](docs/architecture.md)
-- [Engineering decisions](docs/engineering-decisions.md)
-- [Testing and deployment](docs/testing-and-deployment.md)
-- [Security and commercial boundaries](docs/security-and-commercial-boundaries.md)
-- [Educational checkout integrity example](examples/checkout-integrity/README.md)
+### 1. Shopping Cart Consistency
 
-## Project Details and Publication Status
+Preventing an old successful Checkout confirmation from accidentally clearing a newer shopping cart.
 
-- **Portfolio author:** Carles Generó
-- **Project period:** September-November 2026
+The implementation correlates verified Checkout Sessions with the corresponding cart state.
 
-This case study includes a standalone [educational cart example](examples/angular-cart-session/README.md), not a runnable storefront. The production repository remains private. Code excerpts and visual material require permission before public distribution; publication conditions are consolidated in [Security and commercial boundaries](docs/security-and-commercial-boundaries.md).
+### 2. Secure Checkout and Order Persistence
+
+Ensuring product availability and prices are validated on the server, rather than trusting browser-provided data.
+
+Stripe webhooks provide verified payment information before orders are persisted in D1.
+
+### 3. Reliable Background Processing
+
+Handling asynchronous newsletter and promotional-code operations through scheduled Workers and durable database jobs.
+
+Atomic job claims, ownership controls and retry strategies help manage concurrent execution and external-service failures.
+
+### 4. Safe Administration Updates
+
+Preventing outdated Admin forms from overwriting newer catalogue changes.
+
+Revision checks and controlled operations help maintain consistency between D1 and Stripe.
+
+## Architecture
+
+NAIS uses Angular for the frontend and Cloudflare Pages Functions for backend APIs.
+
+Cloudflare D1 stores application data, R2 stores product images, and scheduled Workers process background jobs. Stripe handles payments, while Resend provides email delivery.
+
+**[Explore the architecture and diagrams](docs/architecture.md)**
+
+## Technical Documentation
+
+- [Architecture](docs/architecture.md) — Technology stack, components and application flows.
+- [Engineering Decisions](docs/engineering-decisions.md) — Technical challenges, solutions and trade-offs.
+- [Testing and Deployment](docs/testing-and-deployment.md) — Automated testing, UAT and production releases.
+- [Security and Commercial Boundaries](docs/security-and-commercial-boundaries.md) — Privacy, security and project ownership.
+
+## Educational Code Examples
+
+The repository includes two standalone educational reconstructions of selected engineering patterns.
+
+These examples are independent of the commercial application and use synthetic data.
+
+**[Angular Cart Session](examples/angular-cart-session/README.md)**
+
+An Angular and TypeScript example demonstrating cart state and Checkout Session correlation.
+
+**[Checkout Integrity](examples/checkout-integrity/README.md)**
+
+A TypeScript backend example demonstrating server-side product validation, authoritative pricing and Checkout request integrity.
+
+Both examples include automated tests and instructions in their respective READMEs.
+
+## Project Ownership
+
+NAIS Drinks is a commercial project developed for a client.
+
+The complete production application and its operational configuration remain private. This repository presents selected architectural decisions, technical documentation and independent educational examples.
+
+---
+
+**Portfolio author:** Carles Generó  
+**Live project:** [NAIS Drinks](https://naisdrinks.com/)
