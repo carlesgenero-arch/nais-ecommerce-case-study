@@ -1,29 +1,30 @@
 # Security and Commercial Boundaries
 
-## What This Portfolio Contains
+## About This Portfolio
 
-This portfolio contains a case study of a production system and two standalone educational code examples with automated tests. The case study is supported by repository inspection and the project owner's attribution. It is not a runnable store, a security certification or a verification of the current live configuration.
+This repository presents a technical case study of NAIS Drinks, a production e-commerce application, alongside two standalone educational code examples with automated tests.
 
-The original application repository remains private. No commercial metrics, compliance certification or blanket reliability guarantees are asserted.
+It documents the project's architecture, engineering decisions, testing approach and selected implementation patterns.
 
-## Material Kept Private
+The original commercial application repository remains private. The examples are independent educational reconstructions, not the complete production source code.
 
-- Credentials, signing tokens, private environment files and operational identifiers.
-- Deployment configuration, internal administrative URLs and operational access instructions.
-- Customer information, order records, database exports, logs and runtime state.
-- Real promotional codes, verification links and production email addresses.
-- Original application source and proprietary imagery, logos, typography and commercial assets.
+## Privacy and Security
 
-Technical mechanisms may be explained without publishing operational identities. Any later excerpt must use reviewed, synthetic fixtures and must not enable live payments, email sending or deployments.
+To protect the client and the production system, this repository does not include:
 
-## Permission and Attribution
+- Credentials, API keys, authentication secrets or private environment configuration.
+- Customer information, order records, production database exports or internal logs.
+- Private administrative access details or operational identifiers.
+- Proprietary application source code or commercial assets beyond any material specifically authorized for publication.
 
-**Code excerpts and visual material require permission before public distribution.** Public access to a commercial website does not authorize redistribution of its code, screenshots or assets.
+All published code examples use synthetic data and do not connect to live payment, email or production services.
 
-No license is included until redistribution rights are confirmed. Third-party notices require review for any material actually distributed; a bundled font license does not grant rights to unrelated client artwork.
+## Development and Attribution
 
-## Development Attribution
+NAIS Drinks was developed as a professional freelance project by a sole software developer, with assistance from ChatGPT and OpenAI Codex.
 
-The portfolio author was the sole software developer and coordinated implementation, integration, testing and production delivery. ChatGPT and OpenAI Codex assisted throughout development. This does not imply that every line was manually written, that visual assets were authored by the developer, or that sole-developer status alone grants publication rights.
+My responsibilities included frontend and backend development, technical integration, testing, debugging and production deployment.
 
-Publication permission remains separate from technical completion.
+AI-assisted development tools supported implementation and technical review throughout the project.
+
+The NAIS brand and commercial application remain separate from this educational portfolio. No open-source license is granted for the original commercial application.
